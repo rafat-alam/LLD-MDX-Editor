@@ -5,8 +5,50 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1766754062837,
-      "tag": "0000_green_steel_serpent",
+      "when": 1766763185756,
+      "tag": "0000_bored_sebastian_shaw",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1766763284816,
+      "tag": "0001_rainy_bedlam",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1766766085742,
+      "tag": "0002_salty_meggan",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1767081931625,
+      "tag": "0003_open_screwball",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1767086373225,
+      "tag": "0004_curly_bulldozer",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1767086668335,
+      "tag": "0005_abnormal_zarda",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1767149331320,
+      "tag": "0006_first_cerise",
       "breakpoints": true
     }
   ]

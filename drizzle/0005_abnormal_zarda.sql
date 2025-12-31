@@ -1,0 +1,1 @@
+ALTER TABLE "dir" DROP COLUMN "id_list";

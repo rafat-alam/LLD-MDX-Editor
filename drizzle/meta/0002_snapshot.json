@@ -1,6 +1,6 @@
 {
-  "id": "4ba9b9e8-1bb0-4831-86d0-0353785ab9ab",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "9b743df9-f006-419d-9c30-b6e73e0442b7",
+  "prevId": "ca7c5ad5-9c04-46bb-9613-1c1f92c9fde0",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -8,8 +8,8 @@
       "name": "user",
       "schema": "",
       "columns": {
-        "id": {
-          "name": "id",
+        "_id": {
+          "name": "_id",
           "type": "text",
           "primaryKey": true,
           "notNull": true
@@ -32,21 +32,21 @@
           "primaryKey": false,
           "notNull": true
         },
-        "password": {
-          "name": "password",
+        "password_hash": {
+          "name": "password_hash",
           "type": "text",
           "primaryKey": false,
           "notNull": true
         },
-        "lastactive": {
-          "name": "lastactive",
+        "last_active": {
+          "name": "last_active",
           "type": "timestamp with time zone",
           "primaryKey": false,
           "notNull": true,
           "default": "now()"
         },
-        "repo_id_list": {
-          "name": "repo_id_list",
+        "reponame_list": {
+          "name": "reponame_list",
           "type": "text[]",
           "primaryKey": false,
           "notNull": true,
@@ -57,6 +57,13 @@
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
+        "user__id_unique": {
+          "name": "user__id_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "_id"
+          ]
+        },
         "user_username_unique": {
           "name": "user_username_unique",
           "nullsNotDistinct": false,

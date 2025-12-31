@@ -1,6 +1,6 @@
 {
-  "id": "4ba9b9e8-1bb0-4831-86d0-0353785ab9ab",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "ca7c5ad5-9c04-46bb-9613-1c1f92c9fde0",
+  "prevId": "4ba9b9e8-1bb0-4831-86d0-0353785ab9ab",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -57,6 +57,13 @@
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
+        "user_id_unique": {
+          "name": "user_id_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "id"
+          ]
+        },
         "user_username_unique": {
           "name": "user_username_unique",
           "nullsNotDistinct": false,
