@@ -55,7 +55,7 @@ export class AuthService {
       const payload = { temp_user, otp, otp_expiry };
 
       const secret: string = process.env.JWT_SECRET ?? 'rafat';
-      const token = sign(payload, secret, { expiresIn: '30m' });
+      const token = sign(payload, secret, { expiresIn: '15m' });
 
       return { status: 200, message: token };
     } catch {
@@ -85,7 +85,7 @@ export class AuthService {
       console.log(otp);
 
       const payload = { temp_user: decoded.temp_user, otp, otp_expiry };
-      const new_token = sign(payload, secret, { expiresIn: '30m' });
+      const new_token = sign(payload, secret, { expiresIn: '15m' });
 
       return { status: 200, message: new_token };
     } catch {
@@ -132,7 +132,7 @@ export class AuthService {
   static async init_forgot_pass(email: string): Promise<Response> {
     try {
       if ((await UserRepo.find_by_email(email)) == false) {
-        return { status: 400, message: 'User not registered.' };
+        return { status: 400, message: 'User not registered!' };
       }
 
       const otp = randomInt(100000, 999999).toString();
@@ -144,7 +144,7 @@ export class AuthService {
       const payload = { email, otp, otp_expiry, can_reset: false };
 
       const secret: string = process.env.JWT_SECRET ?? 'rafat';
-      const token = sign(payload, secret, { expiresIn: '30m' });
+      const token = sign(payload, secret, { expiresIn: '15m' });
 
       return { status: 200, message: token };
     } catch {
@@ -174,7 +174,7 @@ export class AuthService {
       console.log(otp);
 
       const payload = { email: decoded.email, otp, otp_expiry, can_reset: false };
-      const new_token = sign(payload, secret, { expiresIn: '30m' });
+      const new_token = sign(payload, secret, { expiresIn: '15m' });
 
       return { status: 200, message: new_token }
     } catch {

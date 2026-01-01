@@ -78,6 +78,10 @@ export class UserService {
 
   static async set_time(username: string): Promise<Response> {
     try {
+      if ((await UserRepo.find_by_username(username)) == false) {
+        return { status: 400, message: 'No user found!' };
+      }
+
       UserRepo.set_time(username);
       return { status: 500, message: success };
     } catch {

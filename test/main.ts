@@ -106,6 +106,36 @@ async function main() {
   // console.dir(await UserService.get_public_user("rafat"), { depth: null });
   // console.dir(await UserService.get_private_user("rafat"), { depth: null });
   // console.log(await UserService.set_time("rafat"));
+
+  // Final Testing
+
+  // AuthService
+  // console.log(await AuthService.init_signup("rafat", "Rafat Alam", "rafat@gmail.com", "1122"));
+  // console.log(await AuthService.resend_otp('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW1wX3VzZXIiOnsidXNlcl9pZCI6Ijc5MDIyYTI0LWQ0OTktNGQ4Mi05MGU4LWEwN2M2NWVmNDAzZiIsInVzZXJuYW1lIjoicmFmYXQiLCJuYW1lIjoiUmFmYXQgQWxhbSIsImVtYWlsIjoicmFmYXRAZ21haWwuY29tIiwicGFzc3dvcmRfaGFzaCI6IjNlMTk5YzFlMDRkNTRhMzZmZGIxNmIyYjAxNDYwODRiOmI1ODY5YmM1ZDU5MmVlOTY2YzlkMmZlNTdhY2E4YWIxNTI0NDkzMzk1YTMwZDIxYTQwZTZjYTZiYWJlOWNhYjYxMDgyZmQ4OTEwNWExNzk2NDUzODI0ZTYxYWE5ODlhMmM2NTZhNmNjMTA2YTdlNGNjOTc2MDYyMWQwZWUwYjNkIiwibGFzdF9hY3RpdmUiOiIyMDI2LTAxLTAxVDEzOjM4OjU3Ljg4NFoifSwib3RwIjoiODY1MDQ1Iiwib3RwX2V4cGlyeSI6MTc2NzI3NTk0OTg3OSwiaWF0IjoxNzY3Mjc1MzQ5LCJleHAiOjE3NjcyNzYyNDl9.q0RPM13XgLou_Xs1mXH5aDH--cFEYYljZBiF686q9Ew'));
+  // console.log(await AuthService.verify_otp('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW1wX3VzZXIiOnsidXNlcl9pZCI6Ijc5MDIyYTI0LWQ0OTktNGQ4Mi05MGU4LWEwN2M2NWVmNDAzZiIsInVzZXJuYW1lIjoicmFmYXQiLCJuYW1lIjoiUmFmYXQgQWxhbSIsImVtYWlsIjoicmFmYXRAZ21haWwuY29tIiwicGFzc3dvcmRfaGFzaCI6IjNlMTk5YzFlMDRkNTRhMzZmZGIxNmIyYjAxNDYwODRiOmI1ODY5YmM1ZDU5MmVlOTY2YzlkMmZlNTdhY2E4YWIxNTI0NDkzMzk1YTMwZDIxYTQwZTZjYTZiYWJlOWNhYjYxMDgyZmQ4OTEwNWExNzk2NDUzODI0ZTYxYWE5ODlhMmM2NTZhNmNjMTA2YTdlNGNjOTc2MDYyMWQwZWUwYjNkIiwibGFzdF9hY3RpdmUiOiIyMDI2LTAxLTAxVDEzOjM4OjU3Ljg4NFoifSwib3RwIjoiODY1MDQ1Iiwib3RwX2V4cGlyeSI6MTc2NzI3NTk0OTg3OSwiaWF0IjoxNzY3Mjc1MzQ5LCJleHAiOjE3NjcyNzYyNDl9.q0RPM13XgLou_Xs1mXH5aDH--cFEYYljZBiF686q9Ew', "865045"));
+  // console.log(await AuthService.init_forgot_pass("rafat@gmail.com"));
+  // console.log(await AuthService.forgot_pass_resend_otp('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhZmF0QGdtYWlsLmNvbSIsIm90cCI6IjkyNjAzMSIsIm90cF9leHBpcnkiOjE3NjcyNzYyOTQ3MjYsImNhbl9yZXNldCI6ZmFsc2UsImlhdCI6MTc2NzI3NTY5NCwiZXhwIjoxNzY3Mjc2NTk0fQ.o-6_1QhnUmCEiU5bmm6sYZFet-RpHMP6UA6DPgjxe6k'));
+  // console.log(await AuthService.forgot_pass_verify_otp("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhZmF0QGdtYWlsLmNvbSIsIm90cCI6IjkyNjAzMSIsIm90cF9leHBpcnkiOjE3NjcyNzYyOTQ3MjYsImNhbl9yZXNldCI6ZmFsc2UsImlhdCI6MTc2NzI3NTY5NCwiZXhwIjoxNzY3Mjc2NTk0fQ.o-6_1QhnUmCEiU5bmm6sYZFet-RpHMP6UA6DPgjxe6k", "926031"))
+  // console.log(await AuthService.set_pass('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhZmF0QGdtYWlsLmNvbSIsImNhbl9yZXNldCI6dHJ1ZSwiaWF0IjoxNzY3Mjc1ODUxLCJleHAiOjE3NjcyNzYxNTF9.Vq1gSq60klNSg3h3l4pRcGRT4pLrCh2iXtiVY3xcsuk', "2233"))
+
+  // HelperService
+  // console.log(HelperService.hash("1122"));
+  // console.log(HelperService.verify("1122", "3073fc1ebd885e890cebc9a3a8d65823:38fb414331c2367ecac3d0f4527dd9fcd12aac3d09ee78214bd4d9c77ddab6ff7c359fb8d28b2ad9d3cd17c193f14aca56974be78423a1fc4e34f40e08087d6d"))
+  // console.log(HelperService.format_time(230000));
+
+  // UserService
+  // console.log(await UserService.get_private_user("rafat"));
+  // console.log(await UserService.get_public_user("rafat"));
+  // console.log(await UserService.get_user_id("rafat"));
+  // console.log(await UserService.set_time("rafat"));
+
+  // NodeService
+  // console.log(await NodeService.add_repo("repo", "1122"));
+  // console.log(await NodeService.add_folder("folder", "1122", "dae160a1-ee15-4618-a006-38d53d735bac"));
+  // console.log(await NodeService.add_file("file", "a", "1122", "6a309340-6cbd-481d-a982-31a99b6ad17c"));
+  // console.log(await NodeService.rename_repo("dae160a1-ee15-4618-a006-38d53d735bac", "repo", "1122"));
+  // console.log(await NodeService.get_folder_by_link([], "1122", "1122"));
+  // console.log(await NodeService.get_parent_id_by_link(["repo", "folder", "file"], "1122", "1122"));
 }
 
 main();
