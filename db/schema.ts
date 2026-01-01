@@ -1,13 +1,12 @@
 import { boolean, pgEnum, pgTable, text, timestamp } from "drizzle-orm/pg-core";
 
 export const user = pgTable('user', {
-  _id: text('_id').notNull().unique().primaryKey(),
+  user_id: text('user_id').notNull().unique().primaryKey(),
   username: text('username').notNull().unique(),
   name: text('name').notNull(),
   email: text('email').notNull().unique(),
   password_hash: text('password_hash').notNull(),
   last_active: timestamp("last_active", { withTimezone: true }).defaultNow().notNull(),
-  reponame_list: text("reponame_list").array().default([]).notNull(),
 });
 
 export const nodeTypeEnum = pgEnum("node_type", ["FILE", "FOLDER"]);

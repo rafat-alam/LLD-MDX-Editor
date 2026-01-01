@@ -80,6 +80,7 @@ export class NodeService {
     }
   }
 
+  // Deprecated
   private static async get_node_list(node_id: string) {
     const li: Dir [] = await NodeRepo.get_list(node_id);
 
@@ -106,6 +107,7 @@ export class NodeService {
     return res;
   }
 
+  // Deprecated
   private static async get_repo(node_id: string, user_id: string): Promise<ResponseRepo> {
     try {
       if(await NodeRepo.is_repo_not_present(node_id)) {
@@ -211,6 +213,7 @@ export class NodeService {
     }
   }
 
+  // Deprecated
   private static async get_repo_list(owner_id: string, user_id: string): Promise<ResponseList> {
     try {
       if(owner_id == user_id) {

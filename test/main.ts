@@ -3,6 +3,7 @@ import { drizzle } from "drizzle-orm/node-postgres";
 import { Pool } from "pg";
 import * as schema from "root/db/schema";
 import { AuthService } from "root/services/auth_service";
+import { HelperService } from "root/services/helper_service";
 import { NodeService } from "root/services/node_service";
 
 export function getDB() {
@@ -86,7 +87,19 @@ async function main() {
   // console.log(await NodeService.add_file("file", "a", "1122", "8d65a722-f045-401f-8cbc-943d9c009d8e"));
   // console.log(await NodeService.add_file("file2", "", "1122", "6b5bb60c-d046-4102-a430-39f767ba1a9c"));
 
-  console.log(await NodeService.get_parent_id_by_link([], "1122", "1122"));
+  // console.log(await NodeService.get_parent_id_by_link([], "1122", "1122"));
+
+  // console.log(await AuthService.init_signup("rafat", "Rafat Alam", "rafat@gmail.com", "1122"));
+  // console.log(await AuthService.resend_otp("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW1wX3VzZXIiOnsidXNlcl9pZCI6ImJjMDEyNGJlLTNhNzAtNDM3Yi1iMTgwLTVkNmUyMzNmNmZlNiIsInVzZXJuYW1lIjoicmFmYXQiLCJuYW1lIjoiUmFmYXQgQWxhbSIsImVtYWlsIjoicmFmYXRAZ21haWwuY29tIiwiaGFzaF9wYXNzd29yZCI6ImQzYTU1NDM0NzQ2ZTM0MGFkNDIwYjkzYjc0MjBlZTZlOjkyOGU0NGI2YTI0ZDNhN2E0NGY4M2NlMzZkOTQyZGVhZWI3ODVmMjZlNDM4ZDU1N2NmYWUzNDc5YjJlMDE0ODRlM2RlYzg1NTMzNWNhYzQ2MDQxMDA4ZWM0ZDc0NTlmYzBlNjM3NjRiODg3MjdmMzhmN2Q3OTVmZDJkMmNhZGEzIiwibGFzdF9hY3RpdmUiOiIyMDI2LTAxLTAxVDA3OjQ4OjM1LjYxNloifSwib3RwIjoiNjIwMzA3Iiwib3RwX2V4cGlyeSI6MTc2NzI1NDMxNTYxNiwiaWF0IjoxNzY3MjUzNzE1LCJleHAiOjE3NjcyNTQzMTV9.rvRaY4tI_pp4BGL1xtIgNmlaKMGsb8jaeq3JMnKoADU"));
+  // console.log(await AuthService.verify_otp("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW1wX3VzZXIiOnsidXNlcl9pZCI6ImJjMDEyNGJlLTNhNzAtNDM3Yi1iMTgwLTVkNmUyMzNmNmZlNiIsInVzZXJuYW1lIjoicmFmYXQiLCJuYW1lIjoiUmFmYXQgQWxhbSIsImVtYWlsIjoicmFmYXRAZ21haWwuY29tIiwiaGFzaF9wYXNzd29yZCI6ImQzYTU1NDM0NzQ2ZTM0MGFkNDIwYjkzYjc0MjBlZTZlOjkyOGU0NGI2YTI0ZDNhN2E0NGY4M2NlMzZkOTQyZGVhZWI3ODVmMjZlNDM4ZDU1N2NmYWUzNDc5YjJlMDE0ODRlM2RlYzg1NTMzNWNhYzQ2MDQxMDA4ZWM0ZDc0NTlmYzBlNjM3NjRiODg3MjdmMzhmN2Q3OTVmZDJkMmNhZGEzIiwibGFzdF9hY3RpdmUiOiIyMDI2LTAxLTAxVDA3OjQ4OjM1LjYxNloifSwib3RwIjoiNjIwMzA3Iiwib3RwX2V4cGlyeSI6MTc2NzI1NDMxNTYxNiwiaWF0IjoxNzY3MjUzNzE1LCJleHAiOjE3NjcyNTQzMTV9.rvRaY4tI_pp4BGL1xtIgNmlaKMGsb8jaeq3JMnKoADU", "620307"));
+
+  // console.log(await HelperService.hash("1122"));
+  // console.log(await HelperService.verify("1122", "cab15d7eb132256d92345a614c55e570:de075629a4d73d9075578737733a74539e5892166e8ecea66b3f9a91a9742c43eb0edb46f18be1b826fb4b757ee21b79de924af96eb7078812ba93ded9821d5d"));
+
+  // console.log(await AuthService.init_forgot_pass("rafat@gmail.com"));
+  // console.log(await AuthService.forgot_pass_resend_otp("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhZmF0QGdtYWlsLmNvbSIsIm90cCI6Ijk3NzI2MSIsIm90cF9leHBpcnkiOjE3NjcyNTQ4Njc5MzgsImNhbl9yZXNldCI6ZmFsc2UsImlhdCI6MTc2NzI1NDI2NywiZXhwIjoxNzY3MjU0ODY3fQ.B0_nlr1EeMZCQF5IF9HDvAub_0VzvBYuPNluGYO4L7U"));
+  // console.log(await AuthService.forgot_pass_verify_otp("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhZmF0QGdtYWlsLmNvbSIsIm90cCI6Ijk3NzI2MSIsIm90cF9leHBpcnkiOjE3NjcyNTQ4Njc5MzgsImNhbl9yZXNldCI6ZmFsc2UsImlhdCI6MTc2NzI1NDI2NywiZXhwIjoxNzY3MjU0ODY3fQ.B0_nlr1EeMZCQF5IF9HDvAub_0VzvBYuPNluGYO4L7U", "977261"));
+  // console.log(await AuthService.set_pass("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhZmF0QGdtYWlsLmNvbSIsImNhbl9yZXNldCI6dHJ1ZSwiaWF0IjoxNzY3MjU0MzkzLCJleHAiOjE3NjcyNTQ5OTN9.l9P3JH3yGOMoAX9Kr-0R6LCsJIbJZiLU8dJGi-9Op2U", "2233"));
 }
 
 main();
