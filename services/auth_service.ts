@@ -31,7 +31,7 @@ interface VerifiedResetToken {
 const iserror: string = "INTERNAL SERVER ERROR!";
 
 export class AuthService {
-  static async init_signup(username: string, name: string, email: string, password: string) : Promise<Response> {
+  static async init_signup(username: string, name: string, email: string, password: string): Promise<Response> {
     try {
       if (await UserRepo.find_by_username(username)) {
         return { status: 400, message: 'Username already taken!' };
@@ -63,7 +63,7 @@ export class AuthService {
     }
   }
 
-  static async resend_otp(token: string) {
+  static async resend_otp(token: string): Promise<Response> {
     try {
       const secret: string = process.env.JWT_SECRET ?? 'rafat';
 
@@ -93,7 +93,7 @@ export class AuthService {
     }
   }
 
-  static async verify_otp(token: string, otp: string) {
+  static async verify_otp(token: string, otp: string): Promise<Response> {
     try {
       const secret: string = process.env.JWT_SECRET ?? 'rafat';
 
@@ -129,7 +129,7 @@ export class AuthService {
     }
   }
 
-  static async init_forgot_pass(email: string) {
+  static async init_forgot_pass(email: string): Promise<Response> {
     try {
       if ((await UserRepo.find_by_email(email)) == false) {
         return { status: 400, message: 'User not registered.' };
@@ -152,7 +152,7 @@ export class AuthService {
     }
   }
 
-  static async forgot_pass_resend_otp(token: string) {
+  static async forgot_pass_resend_otp(token: string): Promise<Response> {
     try {
       const secret: string = process.env.JWT_SECRET ?? 'rafat';
 
@@ -182,7 +182,7 @@ export class AuthService {
     }
   }
 
-  static async forgot_pass_verify_otp(token: string, otp: string) {
+  static async forgot_pass_verify_otp(token: string, otp: string): Promise<Response> {
     try {
       const secret: string = process.env.JWT_SECRET ?? 'rafat';
 
@@ -210,7 +210,7 @@ export class AuthService {
     }
   }
 
-  static async set_pass(token: string, password: string) {
+  static async set_pass(token: string, password: string): Promise<Response> {
     try {
       const secret: string = process.env.JWT_SECRET ?? 'rafat';
 

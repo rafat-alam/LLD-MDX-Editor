@@ -1,16 +1,13 @@
-import { InferSelectModel } from "drizzle-orm";
-import { dir } from "root/db/schema";
 import { _Node } from "root/entities/node";
 import { NodeRepo } from "root/repo/node_repo";
 import { v4 } from "uuid";
-
-type Dir = InferSelectModel<typeof dir>;
 
 interface Response {
   status: number;
   message: string;
 }
 
+// Depricated
 interface ResponseRepo {
   status: number;
   message: string;
@@ -20,7 +17,7 @@ interface ResponseRepo {
 interface ResponseList {
   status: number;
   message: string;
-  list: null | Dir [];
+  list: null | _Node [];
 }
 
 const iserror: string = "INTERNAL SERVER ERROR!";
@@ -30,11 +27,11 @@ export class NodeService {
   static async add_repo(node_name: string, user_id: string): Promise<Response> {
     try {
       if(await NodeRepo.is_name_already_present(user_id, node_name)) {
-        return { status: 400, message: "Repo with same name already Present!" };
+        return { status: 400, message: 'Repo with same name already Present!' };
       }
 
       const node_id = v4();
-      const node = new _Node(node_id, node_name, "FOLDER", false, null, user_id, user_id);
+      const node = new _Node(node_id, node_name, 'FOLDER', false, null, user_id, user_id);
       await NodeRepo.add_node(node);
       return { status: 200, message: success };
     } catch {
@@ -49,11 +46,11 @@ export class NodeService {
       }
 
       if(await NodeRepo.is_name_already_present(parent_id, node_name)) {
-        return { status: 400, message: "File or Folder with same name already Present!" };
+        return { status: 400, message: 'File or Folder with same name already Present!' };
       }
 
       const node_id = v4();
-      const node = new _Node(node_id, node_name, "FOLDER", null, null, user_id, parent_id);
+      const node = new _Node(node_id, node_name, 'FOLDER', null, null, user_id, parent_id);
       await NodeRepo.add_node(node);
       return { status: 200, message: success };
     } catch {
@@ -68,11 +65,11 @@ export class NodeService {
       }
 
       if(await NodeRepo.is_name_already_present(parent_id, node_name)) {
-        return { status: 400, message: "File or Folder with same name already Present!" };
+        return { status: 400, message: 'File or Folder with same name already Present!' };
       }
 
       const node_id = v4();
-      const node = new _Node(node_id, node_name, "FILE", null, content, user_id, parent_id);
+      const node = new _Node(node_id, node_name, 'FILE', null, content, user_id, parent_id);
       await NodeRepo.add_node(node);
       return { status: 200, message: success };
     } catch {
@@ -82,7 +79,7 @@ export class NodeService {
 
   // Deprecated
   private static async get_node_list(node_id: string) {
-    const li: Dir [] = await NodeRepo.get_list(node_id);
+    const li: _Node [] = await NodeRepo.get_list(node_id);
 
     let res: any = [];
 
@@ -114,7 +111,7 @@ export class NodeService {
         return { status: 500, message: iserror, list: null };
       }
 
-      let res: Dir = await NodeRepo.get_node(node_id);
+      let res: _Node = await NodeRepo.get_node(node_id);
 
       if(res.is_public == false && res.owner_id != user_id) {
         return { status: 500, message: iserror, list: null };
@@ -142,7 +139,7 @@ export class NodeService {
   static async rename_repo(repo_id: string, new_name: string, user_id: string): Promise<Response> {
     try {
       if(await NodeRepo.is_name_already_present(user_id, new_name)) {
-        return { status: 400, message: "Repo with same name already Present!" };
+        return { status: 400, message: 'Repo with same name already Present!' };
       }
 
       await NodeRepo.update_time(repo_id);
@@ -161,7 +158,7 @@ export class NodeService {
       }
 
       if(await NodeRepo.is_name_already_present(parent_id, new_name)) {
-        return { status: 400, message: "File or Folder with same name already Present!" };
+        return { status: 400, message: 'File or Folder with same name already Present!' };
       }
 
       await NodeRepo.update_time(node_id);
@@ -190,7 +187,7 @@ export class NodeService {
 
   static async remove(node_id: string, user_id: string): Promise<Response> {
     try {
-      let res: Dir = await NodeRepo.get_node(node_id);
+      let res: _Node = await NodeRepo.get_node(node_id);
 
       if(res.owner_id != user_id) {
         return { status: 500, message: iserror };
@@ -200,7 +197,7 @@ export class NodeService {
       while(list.length) {
         let temp: string [] = [];
         for (const l of list) {
-          let curr: Dir [] = await NodeRepo.remove_by_node_id(l);
+          let curr: _Node [] = await NodeRepo.remove_by_node_id(l);
           for (const e of curr) {
             temp.push(e.node_id);
           }
@@ -240,7 +237,7 @@ export class NodeService {
 
   static async get_folder_by_link(link: string [], owner_id: string, user_id: string): Promise<ResponseList> {
     try {
-      let list: Dir [] = await NodeRepo.get_repo_list(owner_id);
+      let list: _Node [] = await NodeRepo.get_repo_list(owner_id);
       if(owner_id == user_id) {
         list = await NodeRepo.get_repo_list(owner_id);
       } else {
@@ -261,7 +258,7 @@ export class NodeService {
           if(content != null) {
             return { status: 200, message: content, list: null };
           } else {
-            return { status: 400, message: "Page Not Found!", list: null };
+            return { status: 400, message: 'Page Not Found!', list: null };
           }
         }
 
@@ -288,49 +285,32 @@ export class NodeService {
 
   static async get_parent_id_by_link(link: string [], owner_id: string, user_id: string): Promise<Response> {
     try {
+      let list: _Node [];
       if(owner_id == user_id) {
-        let parent_id: string = owner_id;
-        let list: Dir [] = await NodeRepo.get_repo_list(owner_id);
-
-        for(const l of link) {
-          let next_folder_id: string;
-          for(const dir of list) {
-            if(dir.node_name == l) {
-              next_folder_id = dir.node_id
-            }
-          }
-
-          if(next_folder_id == null) {
-            return { status: 400, message: "Page Not Found!" };
-          }
-
-          parent_id = next_folder_id;
-          list = await NodeRepo.get_folder_list(next_folder_id);
-        }
-
-        return { status: 200, message: parent_id };
+        list = await NodeRepo.get_repo_list(owner_id);
       } else {
-        let parent_id: string = owner_id;
-        let list: Dir [] = await NodeRepo.get_public_repo_list(owner_id);
+        list = await NodeRepo.get_public_repo_list(owner_id);
+      }
+      
+      let parent_id: string = owner_id;
 
-        for(const l of link) {
-          let next_folder_id: string;
-          for(const dir of list) {
-            if(dir.node_name == l) {
-              next_folder_id = dir.node_id
-            }
+      for(const l of link) {
+        let next_folder_id: string;
+        for(const dir of list) {
+          if(dir.node_name == l) {
+            next_folder_id = dir.node_id
           }
-
-          if(next_folder_id == null) {
-            return { status: 400, message: "Page Not Found!" };
-          }
-
-          parent_id = next_folder_id;
-          list = await NodeRepo.get_folder_list(next_folder_id);
         }
 
-        return { status: 200, message: parent_id };
+        if(next_folder_id == null) {
+          return { status: 400, message: 'Page Not Found!' };
+        }
+
+        parent_id = next_folder_id;
+        list = await NodeRepo.get_folder_list(next_folder_id);
       }
+
+      return { status: 200, message: parent_id };
     } catch {
       return { status: 500, message: iserror };
     }

@@ -5,6 +5,7 @@ import * as schema from "root/db/schema";
 import { AuthService } from "root/services/auth_service";
 import { HelperService } from "root/services/helper_service";
 import { NodeService } from "root/services/node_service";
+import { UserService } from "root/services/user_service";
 
 export function getDB() {
   if (!_db) {
@@ -100,6 +101,11 @@ async function main() {
   // console.log(await AuthService.forgot_pass_resend_otp("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhZmF0QGdtYWlsLmNvbSIsIm90cCI6Ijk3NzI2MSIsIm90cF9leHBpcnkiOjE3NjcyNTQ4Njc5MzgsImNhbl9yZXNldCI6ZmFsc2UsImlhdCI6MTc2NzI1NDI2NywiZXhwIjoxNzY3MjU0ODY3fQ.B0_nlr1EeMZCQF5IF9HDvAub_0VzvBYuPNluGYO4L7U"));
   // console.log(await AuthService.forgot_pass_verify_otp("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhZmF0QGdtYWlsLmNvbSIsIm90cCI6Ijk3NzI2MSIsIm90cF9leHBpcnkiOjE3NjcyNTQ4Njc5MzgsImNhbl9yZXNldCI6ZmFsc2UsImlhdCI6MTc2NzI1NDI2NywiZXhwIjoxNzY3MjU0ODY3fQ.B0_nlr1EeMZCQF5IF9HDvAub_0VzvBYuPNluGYO4L7U", "977261"));
   // console.log(await AuthService.set_pass("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhZmF0QGdtYWlsLmNvbSIsImNhbl9yZXNldCI6dHJ1ZSwiaWF0IjoxNzY3MjU0MzkzLCJleHAiOjE3NjcyNTQ5OTN9.l9P3JH3yGOMoAX9Kr-0R6LCsJIbJZiLU8dJGi-9Op2U", "2233"));
+
+  // console.log(await UserService.get_user_id("rafat"));
+  // console.dir(await UserService.get_public_user("rafat"), { depth: null });
+  // console.dir(await UserService.get_private_user("rafat"), { depth: null });
+  // console.log(await UserService.set_time("rafat"));
 }
 
 main();
