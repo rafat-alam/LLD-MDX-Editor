@@ -1,0 +1,1 @@
+ALTER TABLE "dir" ALTER COLUMN "is_public" DROP NOT NULL;

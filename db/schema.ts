@@ -16,7 +16,7 @@ export const dir = pgTable('dir', {
   node_id: text('node_id').notNull().unique().primaryKey(),
   node_name: text('node_name').notNull(),
   node_type: nodeTypeEnum('node_type').notNull(),
-  is_public: boolean('is_public').notNull(),
+  is_public: boolean('is_public'),
   content: text('content'),
   owner_id: text('owner_id').notNull(),
   parent_id: text('parent_id').notNull(),
