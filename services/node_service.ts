@@ -138,6 +138,9 @@ export class NodeService {
 
   static async rename_repo(repo_id: string, new_name: string, user_id: string): Promise<Response> {
     try {
+      if(await NodeRepo.is_repo_owner(repo_id, user_id)) {
+        return { status: 500, message: iserror };
+      }
       if(await NodeRepo.is_name_already_present(user_id, new_name)) {
         return { status: 400, message: 'Repo with same name already Present!' };
       }

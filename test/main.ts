@@ -130,12 +130,17 @@ async function main() {
   // console.log(await UserService.set_time("rafat"));
 
   // NodeService
-  // console.log(await NodeService.add_repo("repo", "1122"));
-  // console.log(await NodeService.add_folder("folder", "1122", "dae160a1-ee15-4618-a006-38d53d735bac"));
-  // console.log(await NodeService.add_file("file", "a", "1122", "6a309340-6cbd-481d-a982-31a99b6ad17c"));
-  // console.log(await NodeService.rename_repo("dae160a1-ee15-4618-a006-38d53d735bac", "repo", "1122"));
-  // console.log(await NodeService.get_folder_by_link([], "1122", "1122"));
-  // console.log(await NodeService.get_parent_id_by_link(["repo", "folder", "file"], "1122", "1122"));
+  // console.log(await NodeService.add_repo("repo", "1122")); // passed
+  // console.log(await NodeService.add_folder("folder", "1122", "7b3f1a84-c417-453f-aa93-d9643e0cf93")); // passed
+  // console.log(await NodeService.add_file("file2", "a", "1122", "7b3f1a84-c417-453f-aa93-d9643e0cf93a")); // paseed
+  // console.log(await NodeService.rename_repo("7b3f1a84-c417-453f-aa93-d9643e0cf93a", "rep", "1122")); // passed
+  // console.log(await NodeService.remove("7b3f1a84-c417-453f-aa93-d9643e0cf93a", "1122")); // passed
+  // console.log(await NodeService.rename("7b3f1a84-c417-453f-aa93-d9643e0cf93a", "22dac1db-20a7-4ab2-bd70-23bbfd73a73", "fil", "1122")) // passed
+  // console.log(await NodeService.save("cde7c4c8-ea40-4205-a9a8-ec403898e68e", "b", "1122")) // passed
+  // console.log(await NodeService.set_repo_vis("7b3f1a84-c417-453f-aa93-d9643e0cf93a", "1122", true)); // passed
+  // console.log(await NodeService.get_folder_by_link([], "1122", "1122")); // passed
+  // console.log(await NodeService.get_parent_id_by_link(["repo", "folder", "file"], "1122", "1122")); // passed
+  // console.log(await NodeService.user_repo_count("1122")); // passed
 }
 
 main();
